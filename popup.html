@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  :root {
+    --bg: #1e1f22;
+    --card: #2a2b2e;
+    --border: #3a3b3e;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --on: #4ade80;
+    --off: #52525b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    width: 240px;
+    margin: 0;
+    padding: 14px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--text);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-bottom: 0;
+    transition: background 0.15s ease;
+  }
+
+  .row:hover {
+    background: var(--card);
+  }
+
+  .row span {
+    color: var(--text);
+  }
+
+  /* lever / switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--off);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+
+  .slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    top: 2px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .switch input:checked + .slider {
+    background: var(--on);
+  }
+
+  .switch input:checked + .slider::before {
+    transform: translateX(16px);
+  }
+
+  .switch input:focus-visible + .slider {
+    outline: 2px solid var(--on);
+    outline-offset: 2px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4px 0;
+}
+</style>
+</head>
+<body>
+  <h3><b>Event Suppressor</b></h3>
+
+  <label class="row">
+    <span>Visibility change</span>
+    <span class="switch">
+      <input type="checkbox" data-type="visibility" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Blur</span>
+    <span class="switch">
+      <input type="checkbox" data-type="blur" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Focus</span>
+    <span class="switch">
+      <input type="checkbox" data-type="focus" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <hr />
+
+  <label class="row">
+    <span>Copy</span>
+    <span class="switch">
+      <input type="checkbox" data-type="copy" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Paste</span>
+    <span class="switch">
+      <input type="checkbox" data-type="paste" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Cut</span>
+    <span class="switch">
+      <input type="checkbox" data-type="cut" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Keydown</span>
+    <span class="switch">
+      <input type="checkbox" data-type="keydown" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <label class="row">
+    <span>Context menu</span>
+    <span class="switch">
+      <input type="checkbox" data-type="contextmenu" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <hr />
+
+  <label class="row">
+    <span>Fullscreen change</span>
+    <span class="switch">
+      <input type="checkbox" data-type="fullscreen" />
+      <span class="slider"></span>
+    </span>
+  </label>
+
+  <script src="popup.js"></script>
+</body>
+</html>
